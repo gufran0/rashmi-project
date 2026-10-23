@@ -1,0 +1,217 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Base Minimalist Setup ─────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: auto; /* Lenis handles smooth scrolling */
+  background-color: #0c0e0b;
+  color: #f7f4ee;
+}
+
+body {
+  background-color: #0c0e0b;
+  color: #f7f4ee;
+  font-family: 'Manrope', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: #c9a86a;
+  color: #0c0e0b;
+}
+
+/* ─── Minimalist Scrollbar ──────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #0c0e0b;
+}
+::-webkit-scrollbar-thumb {
+  background: #232720;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #c9a86a;
+}
+
+/* ─── Scroll Progress Bar (1px hairline) ────────────────────────────────── */
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 1px;
+  background: #c9a86a;
+  z-index: 1000;
+  transform-origin: left;
+  width: 100%;
+  transform: scaleX(0);
+  will-change: transform;
+}
+
+/* ─── Typography ────────────────────────────────────────────────────────── */
+.font-serif {
+  font-family: 'Fraunces', Georgia, serif;
+}
+
+.text-gold {
+  color: #c9a86a;
+}
+
+.text-ivory {
+  color: #f7f4ee;
+}
+
+/* ─── Minimalist Buttons ────────────────────────────────────────────────── */
+.btn-gold {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1.85rem;
+  background: #c9a86a;
+  color: #0c0e0b;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: 9999px;
+  border: 1px solid #c9a86a;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn-gold:hover {
+  background: #d4b87a;
+  border-color: #d4b87a;
+  transform: translateY(-1px);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1.85rem;
+  background: transparent;
+  color: #f7f4ee;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 500;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: 9999px;
+  border: 1px solid rgba(247, 244, 238, 0.2);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn-outline:hover {
+  border-color: #c9a86a;
+  color: #c9a86a;
+  background: rgba(201, 168, 106, 0.05);
+  transform: translateY(-1px);
+}
+
+/* ─── Minimalist Hairline Borders & Dividers ────────────────────────────── */
+.hairline-border {
+  border: 1px solid rgba(247, 244, 238, 0.08);
+}
+
+.hairline-b {
+  border-bottom: 1px solid rgba(247, 244, 238, 0.08);
+}
+
+.hairline-t {
+  border-top: 1px solid rgba(247, 244, 238, 0.08);
+}
+
+/* ─── Minimal Inputs ────────────────────────────────────────────────────── */
+.minimal-input {
+  width: 100%;
+  padding: 0.9rem 0;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(247, 244, 238, 0.2);
+  border-radius: 0;
+  font-family: 'Manrope', sans-serif;
+  font-size: 0.95rem;
+  color: #f7f4ee;
+  outline: none;
+  transition: border-color 0.25s ease;
+}
+
+.minimal-input:focus {
+  border-bottom-color: #c9a86a;
+}
+
+.minimal-input::placeholder {
+  color: rgba(247, 244, 238, 0.28);
+}
+
+/* ─── Accordion ─────────────────────────────────────────────────────────── */
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
+  opacity: 0;
+}
+
+.faq-answer.open {
+  max-height: 450px;
+  opacity: 1;
+}
+
+/* ─── Marquee ───────────────────────────────────────────────────────────── */
+.marquee-track {
+  display: flex;
+  animation: marquee 45s linear infinite;
+  width: max-content;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ─── Word wrap animations ──────────────────────────────────────────────── */
+.word-wrap {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+}
+
+.word-inner {
+  display: inline-block;
+  transform: translateY(115%);
+  opacity: 0;
+}
+
+/* ─── Reduced motion ────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .marquee-track {
+    animation: none;
+  }
+}
